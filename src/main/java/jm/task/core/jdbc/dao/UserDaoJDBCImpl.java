@@ -15,18 +15,17 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        String sql = "CREATE TABLE user(
-                + "id bigint(9) auto_increment, "
-                + "name varchar(100), "
-                + "last_name varchar(100), "
-                + "age smallint(3), "
+        String sql = "CREATE TABLE user("
+                + "id bigint(9) auto_increment not null , "
+                + "name varchar(50) not null , "
+                + "last_name varchar(50) not null , "
+                + "age smallint(3) not null , "
                 + "PRIMARY KEY (id) "
-                + )
+                + ") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 
         try (Connection connection = util.getConnection();
              Statement st = connection.createStatement()) {
-            st.execute(sql);
-
+            st.executeUpdate(sql);
         } catch (SQLException s) {
             System.out.println("Проблема с createUsersTable" + s);
         }

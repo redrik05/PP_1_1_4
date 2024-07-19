@@ -59,4 +59,8 @@ public class User {
     public void setAge(Byte age) {
         this.age = age;
     }
+
+    public void printInf() {
+        System.out.println("id=" + getId() + "name=" + getName());
+    }
 }
